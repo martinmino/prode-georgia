@@ -14,9 +14,10 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->integer('id');
+            $table->unsignedInteger('id');
             $table->string('name', 80);
-            $table->integer('dni');
+            $table->unsignedInteger('dni');
+            $table->timestamps();
         });
     }
 
