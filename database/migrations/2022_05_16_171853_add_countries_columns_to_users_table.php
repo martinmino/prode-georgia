@@ -18,6 +18,7 @@ class AddCountriesColumnsToUsersTable extends Migration
             $table->unsignedBigInteger('country2_id')->nullable();
             $table->unsignedBigInteger('country3_id')->nullable();
             $table->unsignedBigInteger('country4_id')->nullable();
+            $table->boolean('admin')->default(false);
 
             $table->foreign('country1_id')->references('id')->on('countries');
             $table->foreign('country2_id')->references('id')->on('countries');

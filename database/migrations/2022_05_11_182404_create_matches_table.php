@@ -23,6 +23,7 @@ class CreateMatchesTable extends Migration
             $table->string('group', 1);
             $table->string('phase', 50);
             $table->string('result', 1)->nullable();
+            $table->date('active_from')->nullable();
             $table->timestamps();
 
             $table->foreign('country1_id')->references('id')->on('countries');
