@@ -1,9 +1,37 @@
 <x-app-layout>
- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
-            </div>
-        </div>
+    <div class="col-sm-12">
+        <h2>Dashboard is works!</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam fugiat recusandae, maxime beatae vitae voluptas! Ut asperiores qui labore molestiae fuga sunt. Excepturi, similique aliquam itaque quam amet reiciendis modi.</p>
     </div>
 </x-app-layout>
