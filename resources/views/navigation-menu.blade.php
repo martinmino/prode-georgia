@@ -16,6 +16,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('regulation')?'active':''}}" href="{{ route('regulation')}}">Reglamento</a>
                 </li>
+                @if (Auth::user()->admin)
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('matches')?'active':''}}" href="{{ route('matches.index')}}">Partidos</a>
+                </li>
+                @endif
             </ul>
     @endauth
 

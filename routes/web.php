@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MatchesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,6 @@ Route::middleware([
     Route::get('/regulation', function () {
         return view('regulation');
     })->name('regulation');
+
+    Route::resource('/matches', MatchesController::class);
 });
