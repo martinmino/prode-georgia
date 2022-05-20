@@ -17,9 +17,9 @@ class CreateMatchesTable extends Migration
             $table->id();
             $table->datetime('date');
             $table->bigInteger('country1_id')->unsigned();
-            $table->integer('goals1')->nullable();
+            $table->integer('goals1')->default(0);
             $table->bigInteger('country2_id')->unsigned();
-            $table->integer('goals2')->nullable();
+            $table->integer('goals2')->default(0);
             $table->string('group', 1);
             $table->string('phase', 50);
             $table->string('result', 1)->nullable();
