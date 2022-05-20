@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Match extends Model
+class Matches extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
+    protected $table = "matches";
 
     /**
      * Get the country that owns the Match
@@ -25,5 +26,13 @@ class Match extends Model
     public function country2(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country2_id', 'id');
+    }
+    public function Paises()
+    {
+        return $this->hasOne('App\Models\Countries', 'id', 'country1_id');
+    }
+    public function Paises2()
+    {
+        return $this->hasOne('App\Models\Countries', 'id', 'country2_id');
     }
 }
