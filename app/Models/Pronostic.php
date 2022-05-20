@@ -11,7 +11,7 @@ class Pronostic extends Model
     use HasFactory;
 
     public $timestamps = false;
-
+    protected $table = "pronostics";
     /**
      * Get the user that owns the Pronostic
      *
@@ -20,5 +20,9 @@ class Pronostic extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function Partido()
+    {
+        return $this->hasOne('App\Models\Matches', 'id');
     }
 }
