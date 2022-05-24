@@ -15,7 +15,8 @@ class CreateMatchesTable extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
-            $table->datetime('date');
+            $table->date('date');
+            $table->time('time');
             $table->bigInteger('country1_id')->unsigned();
             $table->integer('goals1')->default(0);
             $table->bigInteger('country2_id')->unsigned();
@@ -23,7 +24,8 @@ class CreateMatchesTable extends Migration
             $table->string('group', 1);
             $table->string('phase', 50);
             $table->string('result', 1)->nullable();
-            $table->date('active_from')->nullable();
+            $table->date('active_since')->nullable()->index();
+            $table->boolean('is_over')->default(false)->index();
             $table->timestamps();
 
             $table->foreign('country1_id')->references('id')->on('countries');
