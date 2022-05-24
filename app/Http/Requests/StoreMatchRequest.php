@@ -13,7 +13,7 @@ class StoreMatchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreMatchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date'         => 'required|date',
+            'time'         => 'required ',
+            'country1_id'  => 'required|different:country2_id',
+            'country2_id'  => 'required',
+            'group'        => 'required',
+            'phase'        => 'required',
+            'active_since' => 'required|date',
         ];
     }
 }

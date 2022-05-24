@@ -13,7 +13,7 @@ class UpdateMatchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateMatchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date'         => 'required|date',
+            'time'         => 'required',
+            'country1_id'  => 'required|different:country2_id',
+            'goals1'       => 'required|numeric|min:0|max:99',
+            'goals2'       => 'required|numeric|min:0|max:99',
+            'country2_id'  => 'required',
+            'group'        => 'required',
+            'phase'        => 'required',
+            'active_since' => 'required|date',
         ];
     }
 }
