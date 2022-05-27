@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Match;
+use App\Models\Matches;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
 
@@ -15,7 +15,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Match::all();
+        $matches = Matches::all();
 
         return view('matches.index', compact('matches'));
     }
@@ -47,7 +47,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Match $match)
+    public function show(Matches $match)
     {
         //
     }
@@ -58,7 +58,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Match $match)
+    public function edit(Matches $match)
     {
         //
     }
@@ -70,7 +70,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMatchRequest $request, Match $match)
+    public function update(UpdateMatchRequest $request, Matches $match)
     {
         //
     }
@@ -81,7 +81,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Match $match)
+    public function destroy(Matches $match)
     {
         //
     }
