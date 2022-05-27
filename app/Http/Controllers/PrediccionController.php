@@ -13,7 +13,7 @@ class PrediccionController extends Controller
 {
     public function show()
     {
-        $partido = Matches::all();
+        $partido = Matches::all()->where('phase', '=', 'FECHA 1');
         // ->take(6)
         // ->get();
         return view('dashboard', compact('partido'));
