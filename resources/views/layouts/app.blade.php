@@ -15,7 +15,13 @@
 
         <!-- Scripts -->
         <!--<script src="{{ mix('js/app.js') }}" defer></script>-->
-
+        <style>
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        </style>
     </head>
     <body style="padding-top:70px">
 

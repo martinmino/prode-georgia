@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matches;
+use App\Models\Match;
 use App\Models\Pronostic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationData;
@@ -11,12 +11,33 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class PrediccionController extends Controller
 {
-    public function show()
+    public function index()
     {
-        $partido = Matches::all()->where('phase', '=', 'FECHA 1');
-        // ->take(6)
-        // ->get();
-        return view('dashboard', compact('partido'));
+        $matches    = Match::all('id');
+        $pronostics = Pronostic::where('user_id', auth()->id())->get();
+
+        foreach ($matches as $match) {
+
+            $existe = false;
+
+            foreach ($pronostics as $pronostic) {
+                if ($match->id == $pronostic->match_id) {
+                    $existe = true;
+                    break;
+                }
+            }
+
+            if (!$existe) {
+                Pronostic::create([
+                    'user_id' => auth()->id(),
+                    'match_id' => $match->id,
+                ]);
+            }
+        }
+
+        $pronostics = Pronostic::all();
+
+        return view('dashboard', compact('pronostics'));
     }
 
     public function store(Request $request)
