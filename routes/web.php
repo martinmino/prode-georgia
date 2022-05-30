@@ -33,5 +33,5 @@ Route::middleware([
         return view('regulation');
     })->name('regulation');
 
-    Route::resource('/matches', MatchesController::class);
+    Route::resource('matches', MatchesController::class);
 });
