@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partido;
+use App\Models\Country;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
 
@@ -27,7 +28,9 @@ class MatchesController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all(['id', 'name']);
+
+        return view('matches.create', compact('countries'));
     }
 
     /**
@@ -38,7 +41,9 @@ class MatchesController extends Controller
      */
     public function store(StoreMatchRequest $request)
     {
-        //
+        Partido::create($request);
+
+        return $redirect()->route('matches', 'index');
     }
 
     /**
@@ -49,7 +54,7 @@ class MatchesController extends Controller
      */
     public function show(Partido $match)
     {
-        //
+        return view('matches.show', compact('match'));
     }
 
     /**
@@ -60,7 +65,9 @@ class MatchesController extends Controller
      */
     public function edit(Partido $match)
     {
-        //
+        $countries = Country::all(['id', 'name']);
+
+        return view('matches.edit', compact('match', 'countries'));
     }
 
     /**
@@ -72,7 +79,9 @@ class MatchesController extends Controller
      */
     public function update(UpdateMatchRequest $request, Partido $match)
     {
-        //
+        $match->update($request);
+
+        return $redirect()->route('matches', 'index');
     }
 
     /**
