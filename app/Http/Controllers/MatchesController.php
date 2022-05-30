@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Match;
-use App\Models\Country;
-use Illuminate\Http\Request;
+use App\Models\Matches;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
 
@@ -17,7 +15,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Match::all();
+        $matches = Matches::all();
 
         return view('matches.index', compact('matches'));
     }
@@ -29,23 +27,18 @@ class MatchesController extends Controller
      */
     public function create()
     {
-        $countries = Country::all('id', 'name');
-
-        return view('matches.create', compact('countries'));
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMatchRequest  $request
+     * @param  \App\Http\Requests\StorematchRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreMatchRequest $request)
     {
-
-        $match::create($request->all());
-
-        return redirect()->route('matches.index');
+        //
     }
 
     /**
@@ -54,9 +47,9 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Match $match)
+    public function show(Matches $match)
     {
-        return view('matches.show', compact('match'));
+        //
     }
 
     /**
@@ -65,11 +58,9 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Match $match)
+    public function edit(Matches $match)
     {
-        $countries = Country::all('id', 'name');
-
-        return view('matches.edit', compact('match', 'countries'));
+        //
     }
 
     /**
@@ -79,21 +70,9 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMatchRequest $request, Match $match)
+    public function update(UpdateMatchRequest $request, Matches $match)
     {
-        $match->date = $request->date;
-        $match->time = $request->time;
-        $match->group = $request->group;
-        $match->phase = $request->phase;
-        $match->country1_id = $request->country1_id;
-        $match->goals1 = $request->goals1;
-        $match->country2_id = $request->country2_id;
-        $match->goals2 = $request->goals2;
-        $match->active_since = $request->active_since;
-        $match->is_over = $request->has('is_over');
-        $match->save();
-
-        return redirect()->route('matches.index');
+        //
     }
 
     /**
@@ -102,7 +81,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Match $match)
+    public function destroy(Matches $match)
     {
         //
     }
