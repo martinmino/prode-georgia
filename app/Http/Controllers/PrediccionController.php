@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Match;
+use App\Models\Partido;
 use App\Models\Pronostic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationData;
@@ -13,15 +13,15 @@ class PrediccionController extends Controller
 {
     public function index()
     {
-        $matches    = Match::all('id');
+        $partidos    = Partido::all('id');
         $pronostics = Pronostic::where('user_id', auth()->id())->get();
 
-        foreach ($matches as $match) {
+        foreach ($partidos as $partido) {
 
             $existe = false;
 
             foreach ($pronostics as $pronostic) {
-                if ($match->id == $pronostic->match_id) {
+                if ($partido->id == $pronostic->match_id) {
                     $existe = true;
                     break;
                 }

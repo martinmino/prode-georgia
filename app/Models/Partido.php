@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Match extends Model
+class Partido extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
+    public $table = 'matches';
 
     protected $fillable = [
         'date',
