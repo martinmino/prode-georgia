@@ -12,7 +12,6 @@ class Match extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = "matches";
 
     protected $fillable = [
         'date',
@@ -40,5 +39,4 @@ class Match extends Model
     {
         return $this->belongsTo(Country::class, 'country2_id', 'id');
     }
-
 }

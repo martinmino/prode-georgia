@@ -11,7 +11,12 @@ class Pronostic extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = "pronostics";
+
+    protected $fillable = [
+        'match_id',
+        'user_id',
+    ];
+
     /**
      * Get the user that owns the Pronostic
      *
@@ -21,8 +26,8 @@ class Pronostic extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function Partido()
+    public function partido()
     {
-        return $this->hasOne('App\Models\Matches', 'id');
+        return $this->hasOne('App\Models\Match', 'id');
     }
 }
