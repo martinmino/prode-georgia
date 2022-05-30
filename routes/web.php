@@ -24,7 +24,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', [PrediccionController::class, 'show'])->name('dashboard');
+    Route::get('/dashboard', [PrediccionController::class, 'index'])->name('dashboard');
     Route::post('/dashboard', [PrediccionController::class, 'store'])->name('dashboard.store');
     Route::get('/positions', function () {
         return view('positions');

@@ -2,21 +2,56 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matches;
+use App\Models\Match;
 use App\Models\Pronostic;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationData;
 use Illuminate\Validation\ValidationException;
 use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Auth;
 
 class PrediccionController extends Controller
 {
-    public function show()
+    public function index()
     {
-        $partido = Matches::first()
-            ->take(2)
-            ->get();
-        return view('dashboard', compact('partido'));
+        /*
+        Se crean todos los registros de pronosticos para el usuario
+        */
+
+        //Obtengo todos los pronosticos para el usuario
+        $pronostics = Pronostic::where('user_id', Auth::id())->get('match_id');
+
+        //Obtengo todos los partidos disponibles
+        $matches = Match::all('id');
+
+        //Por cada partido verifico que exista el registro de pronostico
+        foreach($matches as $match)
+        {
+            $no_existe_pronostico = false;
+
+            foreach($pronostics as $pronostic)
+            {
+                $no_existe_pronostico = false;
+
+                if ($match->id == $pronostic->match_id)
+                {
+                    $no_existe_pronostico = true;
+                    break;
+                }
+            }
+
+            if (!$no_existe_pronostico)
+            {
+                Pronostic::create([
+                    'match_id' => $match->id,
+                    'user_id'  => Auth::id(),
+                ]);
+            }
+        }
+
+        $pronostics = Pronostic::where('user_id', Auth::id())->get();
+
+        return view('dash', compact('pronostics'));
     }
 
     public function store(Request $request)
