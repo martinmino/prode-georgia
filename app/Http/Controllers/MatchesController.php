@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matches;
+use App\Models\Partido;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
 
@@ -15,7 +15,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Matches::all();
+        $matches = Partido::all();
 
         return view('matches.index', compact('matches'));
     }
@@ -47,7 +47,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Matches $match)
+    public function show(Partido $match)
     {
         //
     }
@@ -58,7 +58,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Matches $match)
+    public function edit(Partido $match)
     {
         //
     }
@@ -70,7 +70,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMatchRequest $request, Matches $match)
+    public function update(UpdateMatchRequest $request, Partido $match)
     {
         //
     }
@@ -81,7 +81,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Matches $match)
+    public function destroy(Partido $match)
     {
         //
     }
