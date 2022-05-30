@@ -41,9 +41,9 @@ class MatchesController extends Controller
      */
     public function store(StoreMatchRequest $request)
     {
-        Partido::create($request);
+        Partido::create($request->all());
 
-        return $redirect()->route('matches', 'index');
+        return redirect()->route('matches.ndex');
     }
 
     /**
@@ -79,9 +79,9 @@ class MatchesController extends Controller
      */
     public function update(UpdateMatchRequest $request, Partido $match)
     {
-        $match->update($request);
+        $match->update($request->all());
 
-        return $redirect()->route('matches', 'index');
+        return redirect()->route('matches.index');
     }
 
     /**
