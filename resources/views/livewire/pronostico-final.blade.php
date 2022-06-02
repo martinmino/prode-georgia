@@ -3,7 +3,7 @@
         MI FINAL SOÑADA
     </div>
     <div class="row">
-        <p>Tienes tiempo hasta el {{ $fecha_limite }} para elegir los paises que llegaran a la final.</p>
+        <p>Tienes tiempo hasta el {{ Carbon\Carbon::parse($fecha_limite)->format('d/m/Y') }} para elegir los paises que llegaran a la final.</p>
         <div class="col-md-3">
             <label for="country1_id" class="form-label">¿Qué país ganará la copa?</label>
             <select class="form-select from-control {{$errors->has('country1_id')?'is-invalid':''}}" id="country1_id" name="country1_id" wire:model.defer="country1_id"{{$hoy>$fecha_limite?'disabled':''}}>
