@@ -6,6 +6,9 @@ use Livewire\Component;
 use App\Models\Pronostic;
 use App\Models\Partido;
 use App\Models\Country;
+use Illuminate\Validation\ValidationException;
+use Carbon\Carbon;
+
 
 class PronosticCard extends Component
 {
@@ -15,11 +18,27 @@ class PronosticCard extends Component
     public Partido $match;
     public Country $country1;
     public Country $country2;
+    public $hoy;
 
     protected $rules = [
         'goals1' => ['required', 'numeric', 'min:0', 'max:99'],
         'goals2' => ['required', 'numeric', 'min:0', 'max:99'],
     ];
+
+
+
+    public function messages()
+    {
+        return [
+            'goals1.required' => 'El campo de ' . $this->country1->name . ' esta vacio',
+            'goals2.required' => 'El campo de ' . $this->country2->name . ' esta vacio',
+            'goals1.max' => 'El campo de ' . $this->country1->name . ' debe ser menor a 100',
+            'goals2.max' => 'El campo de ' . $this->country2->name . ' debe ser menor a 100',
+            'goals1.min' => 'El campo de ' . $this->country1->name . ' debe ser mayor a 0',
+            'goals2.min' => 'El campo de ' . $this->country2->name . ' debe ser mayor a 0',
+
+        ];
+    }
 
     public function render()
     {
@@ -30,6 +49,7 @@ class PronosticCard extends Component
         $this->match = Partido::find($this->pronostic->match_id);
         $this->country1 = Country::find($this->match->country1_id);
         $this->country2 = Country::find($this->match->country2_id);
+        $this->hoy = Carbon::today()->format('d/m/Y');
 
         $this->goals1 = $this->pronostic->goals1;
         $this->goals2 = $this->pronostic->goals2;
@@ -38,8 +58,11 @@ class PronosticCard extends Component
     {
         $this->validate();
 
+
         $this->pronostic->goals1 = $this->goals1;
         $this->pronostic->goals2 = $this->goals2;
         $this->pronostic->save();
+
+        return back()->with('success', 'Datos cargados correctamente');
     }
 }
