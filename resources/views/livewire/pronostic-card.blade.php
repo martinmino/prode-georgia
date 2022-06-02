@@ -25,7 +25,7 @@
                 <button class="btn btn-outline-dark" wire:click="grabar">Enviar</button>
                 <br>
                 <br>
-                <p style = "float: left; margin-right: 20px; "><b> Fecha: {{ $match->date }}</b></p><p > <b>Horario: {{ $match->time }}</b></p>
+                <p style = "float: left; margin-right: 20px; "><b> Fecha: {{Carbon\Carbon::parse($match->date)->format('d/m/Y') }}</b></p><p > <b>Horario: {{ $match->time }}hs</b></p>
                 @error("goals1")
                 <br>
                 <br>
