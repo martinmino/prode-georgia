@@ -157,7 +157,11 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
-
-    'attributes' => [],
+    'attributes' => [
+        'country1_id' => 'Primer Puesto',
+        'country2_id' => 'Segundo Puesto',
+        'country3_id' => 'Tercer Puesto',
+        'country4_id' => 'Cuarto Puesto'
+    ],
 
 ];
