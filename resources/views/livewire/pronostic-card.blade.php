@@ -2,7 +2,7 @@
     <div class="card-columns-fluid " style="margin-bottom: 25px;">
         <div class="card  bg-light" style = "width: 22rem; " >
             <div class="card-body">
-                <p>Partido: {{ $match->id }}</p>
+                <p style = "float: left; margin-right: 20px;">Partido: {{ $match->id }}</p><p >Grupo: {{ $match->group }}</p>
                 <img class="rounded float-start"  src="img/banderas/{{$country1->id}}.png" alt="{{ $country1->name}}" style="margin-bottom: 40px; margin-right: 20px;">
                 <img class="rounded float-start"  src="img/banderas/{{$country2->id}}.png" alt="{{ $country2->name }}" style="margin-bottom: 40px;">
                 <div class="input-group-addon ">
@@ -25,12 +25,20 @@
                 <button class="btn btn-outline-dark" wire:click="grabar">Enviar</button>
                 <br>
                 <br>
+                <p style = "float: left; margin-right: 20px; "><b> Fecha: {{ $match->date }}</b></p><p > <b>Horario: {{ $match->time }}</b></p>
                 @error("goals1")
+                <br>
+                <br>
                     <label style="color: red;">{{$message}}</label>
                 @enderror
                 @error("goals2")
-                    <label style="color: green">{{$message}}</label>
+                <br>
+                <br>
+                    <label style="color: red;">{{$message}}</label>
                 @enderror
+                @if (\Session::has('success'))
+                       <label style="color: green;"> {!! \Session::get('success') !!}</label>
+                @endif
             </div>
         </div>
     </div>
