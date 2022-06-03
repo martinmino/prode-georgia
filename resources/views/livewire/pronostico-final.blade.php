@@ -1,8 +1,9 @@
-<div style="    max-width: 1280px;
+<div style="max-width: 1280px;
     width: 100%;
     position: relative;
     display: block;
-    margin: 0 auto;">
+    margin: 0 auto;
+    margin-top: 1cm">
     <div class="alert alert-primary text-end" role="alert">
         MI FINAL SOÑADA
     </div>
