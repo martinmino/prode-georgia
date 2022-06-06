@@ -44,7 +44,11 @@
                 <td>
                     <a href="{{ route('matches.show', $item->id)}}" class="btn btn-primary btn-sm">Ver</a>
                     <a href="{{ route('matches.edit', $item->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                    <a href="{{ route('matches.destroy', $item->id)}}" class="btn btn-danger btn-sm">Borrar</a>
+                    <form  style = "float: right;" action="{{ route('matches.destroy',$item->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type = "submit" class="btn btn-danger btn-sm" >Borrar</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
