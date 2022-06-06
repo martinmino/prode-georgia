@@ -1,4 +1,10 @@
 <x-app-layout>
+    <div style="max-width: 1280px;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    margin-top: 1cm">
     <h1>Editar partido</h1>
 
     <form class="row g-3" action="{{ route('matches.update', $match->id)}}" method="POST">
@@ -116,6 +122,13 @@
 
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Grabar</button>
+          <a href="{{ route('matches.index')}}" class="btn btn-primary">Volver</a>
         </div>
       </form>
+      <br>
+    <br>
+    @if (\Session::has('success'))
+    <label style="color: green;"> {!! \Session::get('success') !!}</label>
+    @endif
+      </div>
 </x-app-layout>
