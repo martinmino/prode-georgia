@@ -31,6 +31,19 @@ Route::middleware([
     Route::get('/regulation', function () {
         return view('regulation');
     })->name('regulation');
+});
 
-    Route::resource('matches', MatchesController::class);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->controller(MatchesController::class)->group(function () {
+    Route::resource('/matches', MatchesController::class);
+    Route::get('/matches', 'index')->name('matches.index');
+    Route::get('/matches/create', 'create')->name('matches.create');
+    Route::post('/matches/store', 'store')->name('matches.store');
+    Route::get('/matches/{id}', 'show')->name('matches.show');
+    Route::get('/matches/{id}/edit', 'edit')->name('matches.edit');
+    Route::post('/matches/{id}', 'update')->name('matches.update');
+    Route::delete('/matches/{id}', 'destroy')->name('matches.destroy');
 });
