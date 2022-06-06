@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\PrediccionController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +47,18 @@ Route::middleware([
     Route::get('/matches/{id}/edit', 'edit')->name('matches.edit');
     Route::post('/matches/{id}', 'update')->name('matches.update');
     Route::delete('/matches/{id}', 'destroy')->name('matches.destroy');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->controller(EmployeeController::class)->group(function () {
+    Route::resource('/employee', EmployeeController::class);
+    Route::get('/employee', 'index')->name('employee.index');
+    Route::get('/employee/create', 'create')->name('employee.create');
+    Route::post('/employee/store', 'store')->name('employee.store');
+    Route::get('/employee/{id}', 'show')->name('employee.show');
+    Route::get('/employee/{id}/edit', 'edit')->name('employee.edit');
+    Route::post('/employee/{id}', 'update')->name('employee.update');
 });
