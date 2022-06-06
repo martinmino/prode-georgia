@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('matches')?'active':''}}" href="{{ route('matches.index')}}">Partidos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('employee')?'active':''}}" href="{{ route('employee.index')}}">Empleados</a>
+                </li>
                 @endif
             </ul>
     @endauth
@@ -47,6 +50,7 @@
             <li class="nav-item">
                 <a href="{{ route('register')}}" class="nav-link">Registrarse</a>
             </li>
+
         </ul>
     @endauth
     </div>
