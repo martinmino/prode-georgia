@@ -61,4 +61,5 @@ Route::middleware([
     Route::get('/employee/{id}', 'show')->name('employee.show');
     Route::get('/employee/{id}/edit', 'edit')->name('employee.edit');
     Route::post('/employee/{id}', 'update')->name('employee.update');
+    Route::delete('/employee/{id}', 'destroy')->name('employee.destroy');
 });
