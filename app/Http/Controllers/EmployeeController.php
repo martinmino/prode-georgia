@@ -50,7 +50,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\match  $match
+     * @param  \App\Models\employee  $match
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,7 +63,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\match  $match
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,8 +77,8 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatematchRequest  $request
-     * @param  \App\Models\match  $match
+     * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateEmployeeRequest  $request, $id)
@@ -90,5 +90,17 @@ class EmployeeController extends Controller
         $employee->save();
 
         return back()->with('success', 'Actualizado Correctamente');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Employee  $employee
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $employee = Employee::find($id);
+        $employee->delete();
+        return  redirect()->route('employee.index');
     }
 }
