@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Matches;
 use App\Models\Country;
+use App\Models\User;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
+use App\Models\Employee;
+use App\Models\Pronostic;
 use Illuminate\Http\Request;
 
 class MatchesController extends Controller
@@ -30,6 +33,7 @@ class MatchesController extends Controller
     public function create()
     {
         $countries = Country::all();
+
         return view('matches.create', compact('countries'));
     }
 
@@ -62,9 +66,11 @@ class MatchesController extends Controller
     public function show($id)
     {
         $match = Matches::find($id);
+        $pronostics = Pronostic::join('users', 'users.id', '=', 'pronostics.user_id')->where("match_id", "=", $id)->get();
 
-        return view('matches.show', compact('match'));
+        return view('matches.show', compact('match', 'pronostics'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -87,7 +93,7 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatematchRequest  $request, $id)
     {
         $match = Matches::find($id);
         $match->date = $request->date;
