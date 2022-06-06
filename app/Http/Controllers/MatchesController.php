@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Partido;
+use App\Models\Matches;
 use App\Models\Country;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
+use Illuminate\Http\Request;
 
 class MatchesController extends Controller
 {
@@ -16,7 +17,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Partido::all();
+        $matches = Matches::all();
 
         return view('matches.index', compact('matches'));
     }
@@ -28,8 +29,7 @@ class MatchesController extends Controller
      */
     public function create()
     {
-        $countries = Country::all(['id', 'name']);
-
+        $countries = Country::all();
         return view('matches.create', compact('countries'));
     }
 
@@ -41,9 +41,16 @@ class MatchesController extends Controller
      */
     public function store(StoreMatchRequest $request)
     {
-        Partido::create($request->all());
-
-        return redirect()->route('matches.ndex');
+        $match = new Matches();
+        $match->date = $request->date;
+        $match->time = $request->time;
+        $match->group = $request->group;
+        $match->phase = $request->phase;
+        $match->country1_id = $request->country1_id;
+        $match->country2_id = $request->country2_id;
+        $match->active_since = $request->active_since;
+        $match->save();
+        return back()->with('success', 'Creado Correctamente');
     }
 
     /**
@@ -52,8 +59,10 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Partido $match)
+    public function show($id)
     {
+        $match = Matches::find($id);
+
         return view('matches.show', compact('match'));
     }
 
@@ -63,9 +72,10 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partido $match)
+    public function edit($id)
     {
-        $countries = Country::all(['id', 'name']);
+        $countries = Country::all();
+        $match = Matches::find($id);
 
         return view('matches.edit', compact('match', 'countries'));
     }
@@ -77,11 +87,22 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMatchRequest $request, Partido $match)
+    public function update(Request $request, $id)
     {
-        $match->update($request->all());
+        $match = Matches::find($id);
+        $match->date = $request->date;
+        $match->time = $request->time;
+        $match->group = $request->group;
+        $match->phase = $request->phase;
+        $match->country1_id = $request->country1_id;
+        $match->goals1 = $request->goals1;
+        $match->country2_id = $request->country2_id;
+        $match->goals2 = $request->goals2;
+        $match->active_since = $request->active_since;
+        $match->is_over = isset($request->is_over) ? 1 : 0;
+        $match->save();
 
-        return redirect()->route('matches.index');
+        return back()->with('success', 'Actualizado Correctamente');
     }
 
     /**
@@ -90,8 +111,10 @@ class MatchesController extends Controller
      * @param  \App\Models\match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Partido $match)
+    public function destroy($id)
     {
-        //
+        $match = Matches::find($id);
+        $match->delete();
+        return  redirect()->route('matches.index');
     }
 }
