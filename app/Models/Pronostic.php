@@ -28,6 +28,6 @@ class Pronostic extends Model
     }
     public function partido()
     {
-        return $this->hasOne('App\Models\Match', 'id');
+        return $this->hasOne(Matches::class, 'id', 'match_id');
     }
 }
