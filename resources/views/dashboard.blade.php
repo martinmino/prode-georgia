@@ -5,7 +5,7 @@
     position: relative;
     display: block;
     margin: 0 auto;">
-    <h1>Aqui los pronosticos</h1>
+    <h1 style="text-align: center;   margin-bottom: 35px;  border-bottom: 2px solid black; padding: 20px 0 30px;">Pronosticos</h1>
 
     <div class="row">
         <div class="card-group">
@@ -16,7 +16,5 @@
     </div>
 </div>
 </x-app-layout>
-
-
 
 
