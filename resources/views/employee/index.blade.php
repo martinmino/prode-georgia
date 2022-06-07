@@ -25,10 +25,10 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->dni }}</td>
-                <td>
-                    <a href="{{ route('employee.show', $item->id)}}" class="btn btn-primary btn-sm">Ver</a>
-                    <a href="{{ route('employee.edit', $item->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                    <form  style = "float: right;" action="{{ route('employee.destroy',$item->id)}}" method="POST">
+                <td style="white-space: nowrap; width: 14%;">
+                    <a href="{{ route('employee.show', $item->id)}}" class="btn btn-primary btn-sm" style="float:left; margin-right:10px;">Ver</a>
+                    <a href="{{ route('employee.edit', $item->id)}}" class="btn btn-primary btn-sm" style=" float:left; margin-right:10px;">Editar</a>
+                    <form   action="{{ route('employee.destroy',$item->id)}}" method="POST" style="float:left;">
                         @csrf
                         @method('delete')
                         <button type = "submit" class="btn btn-danger btn-sm" >Borrar</button>
