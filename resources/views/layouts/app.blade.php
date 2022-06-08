@@ -21,9 +21,14 @@
                 -webkit-appearance: none;
                 margin: 0;
             }
+            body {
+                padding-top:100px;
+                padding-left:25px;
+                padding-right:25px;
+            }
         </style>
     </head>
-    <body style="padding-top:100px">
+    <body>
 
         @include('navigation-menu')
 
