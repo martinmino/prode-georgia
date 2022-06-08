@@ -1,10 +1,5 @@
 <x-app-layout>
-    <div class="row"style="max-width: 1280px;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    margin-top: 1cm" >
+
         <div class="col-8">
                 @foreach ($pronostics as $item)
                 <br>
@@ -13,7 +8,7 @@
                 </h2>
                 <br>
                 <h3>
-                    {{ $match->country1->name }}
+                {{ $match->country1->name }}
                 <span class="badge bg-secondary">{{ $item->goals1}}</span>
                 -
                 <span class="badge bg-secondary">{{ $item->goals2}}</span>
@@ -26,13 +21,5 @@
 
         <div class="col-2">
         </div>
-    </div>
-
-
-
-
-</x-app-layout>
-
-
 
 </x-app-layout>

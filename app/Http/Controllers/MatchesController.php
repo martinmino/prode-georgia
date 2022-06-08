@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Matches;
 use App\Models\Country;
 use App\Models\User;
-use App\Http\Requests\StoreMatchRequest;
-use App\Http\Requests\UpdateMatchRequest;
 use App\Models\Employee;
 use App\Models\Pronostic;
+use App\Http\Requests\StoreMatchRequest;
+use App\Http\Requests\UpdateMatchRequest;
 use Illuminate\Http\Request;
 
 class MatchesController extends Controller
@@ -108,7 +108,53 @@ class MatchesController extends Controller
         $match->is_over = isset($request->is_over) ? 1 : 0;
         $match->save();
 
+
+        /**
+         * Si el partido tiene el tilde de finalizado, llamo a la funcion
+         * que calcula el puntaje para cada pronostico de dicho partido
+         */
+        if ($match->is_over) $this->calcularPuntajes($match);
+
         return back()->with('success', 'Actualizado Correctamente');
+    }
+
+    /**
+     * Función que recibe un partido finalizado y calcula el puntaje
+     * para cada pronostico del partido
+     */
+    private function calcularPuntajes(Matches $m)
+    {
+        //Cargo todos los pronostico del partido
+        $pronostics = Pronostic::where('match_id', $m->id)->get();
+
+        //Recorro todos los pronosticos
+        foreach ($pronostics as $p) {
+            $p->puntos = 0;
+            $p->aciertos = false;
+
+            //Ganó el equipo A
+            if ($m->goals1 > $m->goals2 && $p->goals1 > $p->goals2) $p->puntos += 5;
+            //Ganó el equipo B
+            if ($m->goals1 < $m->goals2 && $p->goals1 < $p->goals2) $p->puntos += 5;
+            //Empate
+            if ($m->goals1 == $m->goals2 && $p->goals1 == $p->goals2) $p->puntos += 5;
+            //Puntos extras por acertar un marcador
+            if ($m->goals1 == $p->goals1 || $m->goals2 == $p->goals2) $p->puntos += 2;
+            //Puntos extas por acertar marcador exacto
+            if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2)
+            {
+                $p->puntos += 5;
+                $p->aciertos = true;
+            }
+            //Puntos por definicion por penales
+            if ($m->penalties_definition && $m->goals1 == $m->goals2)
+            {
+                if ($m->penalties_winner == $p->penalties_winner) $p->puntos += 5;
+            }
+
+            $p->save();
+        }
+
     }
 
     /**

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\PrediccionController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PositionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [PrediccionController::class, 'index'])->name('dashboard');
-    Route::get('/positions', function () {
-        return view('positions');
-    })->name('positions');
+    Route::get('/positions', [PositionsController::class, 'index'])->name('positions');
     Route::get('/regulation', function () {
         return view('regulation');
     })->name('regulation');

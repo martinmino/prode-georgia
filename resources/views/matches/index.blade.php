@@ -1,10 +1,5 @@
 <x-app-layout>
-    <div style="max-width: 1280px;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    margin-top: 1cm">
+
     <h1>Partidos</h1>
 
     <table class="table table-striped table-hover table-bordered table-sm">
@@ -54,5 +49,5 @@
             @endforeach
         </tbody>
     </table>
-</div>
+
 </x-app-layout>

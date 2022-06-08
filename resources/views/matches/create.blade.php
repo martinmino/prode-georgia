@@ -1,10 +1,5 @@
 <x-app-layout>
-    <div  style="max-width: 1280px;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    margin-top: 1cm">
+
     <h1>Crear nuevo partido</h1>
 
     <form class="row g-3" action="{{ route('matches.store')}}" method="POST">
@@ -98,5 +93,5 @@
       @if (\Session::has('success'))
     <label style="color: green;"> {!! \Session::get('success') !!}</label>
     @endif
-    </div>
+
 </x-app-layout>

@@ -1,10 +1,5 @@
 <x-app-layout>
-    <div style="max-width: 1280px;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    margin-top: 1cm">
+
     <h1>Editar partido</h1>
 
     <form class="row g-3" action="{{ route('matches.update', $match->id)}}" method="POST">
@@ -53,7 +48,7 @@
 
         <div class="col-md-5">
           <label for="country1_id" class="form-label">Pais 1</label>
-          <select class="form-select from-control {{$errors->has('country1_id')?'is-invalid':''}}" id="country1_id" name="country1_id">
+          <select class="form-select from-control {{$errors->has('country1_id')?'is-invalid':''}}" id="country1_id" name="country1_id" readonly>
               <option value="">---Seleccione un país---</option>
               @foreach ($countries as $item)
               <option value="{{ $item->id }}" {{$match->country1_id==$item->id?'selected':''}}>{{ $item->name }}</option>
@@ -78,7 +73,7 @@
 
         <div class="col-md-5">
             <label for="country2_id" class="form-label">Pais 2</label>
-            <select class="form-select from-control {{$errors->has('country2_id')?'is-invalid':''}}" id="country2_id" name="country2_id">
+            <select class="form-select from-control {{$errors->has('country2_id')?'is-invalid':''}}" id="country2_id" name="country2_id" readonly>
                 <option value="">---Seleccione un país---</option>
                 @foreach ($countries as $item)
                 <option value="{{ $item->id }}" {{$match->country2_id==$item->id?'selected':''}}>{{ $item->name }}</option>
@@ -130,5 +125,5 @@
     @if (\Session::has('success'))
     <label style="color: green;"> {!! \Session::get('success') !!}</label>
     @endif
-      </div>
+
 </x-app-layout>

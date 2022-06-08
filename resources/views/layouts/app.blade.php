@@ -23,7 +23,7 @@
             }
         </style>
     </head>
-    <body style="padding-top:70px">
+    <body style="padding-top:100px">
 
         @include('navigation-menu')
 
