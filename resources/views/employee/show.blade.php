@@ -5,32 +5,34 @@
     display: block;
     margin: 0 auto;
     margin-top: 1cm" >
-        <div class="col-8">
-            <h1>
+        <div class="col-8" style="text-align: center; margin:auto">
+            <h1 >
                 {{$employee->id}}-{{$employee->name}}-{{$employee->dni}}
             </h1>
                 @foreach ($pronostics as $item)
                 <br>
-                <h3>
-                {{$item->partido->country1->name}}
-                 <span class="badge bg-secondary">@if ($item->goals1==null)
+                <div style="background-color:black; border-radius: 15px; height: 50px; position: relative; align-items:center">
+                <h3 style="text-align: center; font-size: 20px;">
+               <label style="color: white"> {{$item->partido->country1->name}}</label>
+                 <span class="badge bg-secondary" style="color: white">@if ($item->goals1==null)
                     Falta completar
                  @else
                     {{ $item->goals1}}
                  @endif</span>
                 -
-                <span class="badge bg-secondary">@if ($item->goals2==null)
+                <span class="badge bg-secondary" >@if ($item->goals2==null)
                     Falta completar
                  @else
                     {{ $item->goals2}}
                  @endif</span>
-                {{$item->partido->country2->name}}
+                <label style="color: white" >{{$item->partido->country2->name}}</label>
                 </h3>
+                </div>
                 @endforeach
-            <a href="{{ route('employee.index')}}" class="btn btn-primary">Volver</a>
-        </div>
 
-        <div class="col-2">
         </div>
     </div>
+    <div style="position: sticky; bottom: 0; float:right;">
+            <a href="{{ route('employee.index')}}" class="btn btn-primary btn-lg"  >Volver</a>
+            </div>
 </x-app-layout>
