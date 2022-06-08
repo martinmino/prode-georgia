@@ -7,6 +7,7 @@
             <tr>
                 <td colspan="11" class="text-end">
                     <a href="{{ route('matches.create')}}" class="btn btn-primary btn-sm">Nuevo</a>
+
                 </td>
             </tr>
             <tr>
@@ -36,10 +37,10 @@
                 <td>{{ $item->group }}</td>
                 <td>{{ $item->phase }}</td>
                 <td>{{ $item->active_since }}</td>
-                <td>
-                    <a href="{{ route('matches.show', $item->id)}}" class="btn btn-primary btn-sm">Ver</a>
-                    <a href="{{ route('matches.edit', $item->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                    <form  style = "float: right;" action="{{ route('matches.destroy',$item->id)}}" method="POST">
+                <td style="white-space: nowrap; width: 14%;">
+                    <a href="{{ route('matches.show', $item->id)}}" class="btn btn-primary btn-sm" style="float:left; margin-right:10px;">Ver</a>
+                    <a href="{{ route('matches.edit', $item->id)}}" class="btn btn-primary btn-sm" style=" float:left; margin-right:10px;">Editar</a>
+                    <form  style = "float: right;" action="{{ route('matches.destroy',$item->id)}}" method="POST" style="float:left;">
                         @csrf
                         @method('delete')
                         <button type = "submit" class="btn btn-danger btn-sm" >Borrar</button>
@@ -51,3 +52,4 @@
     </table>
 
 </x-app-layout>
+

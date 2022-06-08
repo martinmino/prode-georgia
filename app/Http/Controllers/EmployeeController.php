@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use App\Models\Pronostic;
+use App\Models\Country;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Http\Requests\StoreEmployeeRequest;
@@ -56,8 +59,8 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::find($id);
-
-        return view('employee.show', compact('employee'));
+        $pronostics = Pronostic::join('users', 'users.id', '=', 'pronostics.user_id')->where("employee_id", "=", $id)->get();
+        return view('employee.show', compact('pronostics', 'employee'));
     }
 
     /**

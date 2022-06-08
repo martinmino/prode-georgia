@@ -27,12 +27,4 @@ class Matches extends Model
     {
         return $this->belongsTo(Country::class, 'country2_id', 'id');
     }
-    public function Paises()
-    {
-        return $this->hasOne('App\Models\Country', 'id', 'country1_id');
-    }
-    public function Paises2()
-    {
-        return $this->hasOne('App\Models\Country', 'id', 'country2_id');
-    }
 }
