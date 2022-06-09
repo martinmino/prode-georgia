@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
@@ -15,20 +16,30 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User();
-        $user->name        = 'MIÑO, MARTIN ALBERTO';
-        $user->employee_id = 438;
-        $user->email       = 'mmino@georgia.com.ar';
-        $user->password    = Hash::make('12345678');
-        $user->admin       = true;
-        $user->save();
+        $employees = Employee::all();
 
-        $user = new User();
-        $user->name        = 'KRAWIECKI, MATIAS';
-        $user->employee_id = 1044;
-        $user->email       = 'matias@georgia.com.ar';
-        $user->password    = Hash::make('12345678');
-        $user->admin       = true;
-        $user->save();
+        foreach ($employees as $employee) {
+            $user = new User();
+            $user->name        = $employee->name;
+            $user->employee_id = $employee->id;
+
+            switch ($employee->id) {
+                case 438:
+                    $user->email='mmino@georgia.com.ar';
+                    break;
+
+                case 1044:
+                    $user->email='matias@georgia.com.ar';
+                    break;
+
+                default:
+                    $user->email= $employee->id . '@georgia.com.ar';
+                    break;
+            }
+
+            $user->password    = Hash::make('1');
+            $user->admin       = true;
+            $user->save();
+        }
     }
 }
