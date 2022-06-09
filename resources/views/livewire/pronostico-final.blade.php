@@ -1,3 +1,4 @@
+<div>
     <div class="alert alert-primary text-end" role="alert">
         MI FINAL SOÑADA
     </div>
@@ -77,3 +78,4 @@
     @if (\Session::has('success'))
     <label style="color: green;"> {!! \Session::get('success') !!}</label>
     @endif
+</div>
