@@ -46,10 +46,12 @@ class PronosticCard extends Component
     }
     public function mount()
     {
+        $this->hoy = Carbon::now('America/Argentina/Buenos_Aires')->format('Y-m-d');
+        $this->hoyHoras = Carbon::now('America/Argentina/Buenos_Aires')->format('H:i:s');
         $this->match = Partido::find($this->pronostic->match_id);
         $this->country1 = Country::find($this->match->country1_id);
         $this->country2 = Country::find($this->match->country2_id);
-        $this->hoy = Carbon::today()->format('d/m/Y');
+
 
         $this->goals1 = $this->pronostic->goals1;
         $this->goals2 = $this->pronostic->goals2;
@@ -57,12 +59,18 @@ class PronosticCard extends Component
     public function grabar()
     {
         $this->validate();
-
-
-        $this->pronostic->goals1 = $this->goals1;
-        $this->pronostic->goals2 = $this->goals2;
-        $this->pronostic->save();
-
-        return back()->with('success', 'Datos cargados correctamente');
+        $hoy = Carbon::now('America/Argentina/Buenos_Aires')->format('Y-m-d');
+        $hoyHoras = Carbon::now('America/Argentina/Buenos_Aires')->format('H:i:s');
+        if ($hoy <= $this->match->date) {
+            if ($hoy == $this->match->date && $hoyHoras > $this->match->time) {
+                return back()->with('success', 'Ya no puedes modificar el resultado');
+            } else {
+                $this->pronostic->goals1 = $this->goals1;
+                $this->pronostic->goals2 = $this->goals2;
+                $this->pronostic->save();
+                return back()->with('success', 'Datos cargados correctamente');
+            }
+            return back()->with('success', 'Ya no puedes modificar el resultado');
+        }
     }
 }

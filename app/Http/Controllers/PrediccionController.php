@@ -15,8 +15,8 @@ class PrediccionController extends Controller
     public function index()
     {
         $partidos    = Partido::all('id');
-        $pronostics = Pronostic::where('user_id', auth()->id())->get();
-        $hoy = Carbon::today()->format('d/m/Y');
+        $pronostics = Pronostic::all()->where('user_id', auth()->id());
+
 
         foreach ($partidos as $partido) {
 
@@ -37,8 +37,7 @@ class PrediccionController extends Controller
             }
         }
 
-        $pronostics = Pronostic::all()->where('date', '<', $hoy);
-
+        $pronostics = Pronostic::all();
         return view('dashboard', compact('pronostics'));
     }
 }

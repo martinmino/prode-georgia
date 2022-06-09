@@ -9,28 +9,34 @@
                     <label class="card-text" style="margin-left:15px; margin-right:5px;">
                         <b>{{strtoupper(substr($country1->name,0,3))}}</b>
                     </label>
-                    <input type="number" name="goals1" min="0" max ="99" wire:model.defer="goals1" required style="width : 40px; heigth : 1px; margin-right:10px;"{{$hoy>$match->date?'disabled':''}}>
+                    <input type="number" name="goals1" min="0" max ="99" wire:model.defer="goals1" required style="width : 40px; heigth : 1px; margin-right:10px;"{{$hoy >=$match->date?$hoy ==$match->date&&$hoyHoras < $match->time?'':'disabled':''}}>
 
                     <label class="card-text" style="margin-left:5px; margin-right:10px;">
                         <b>VS</b>
                     </label>
 
-                    <input type="number" name="goals2"  min="0" max = "99" wire:model.defer="goals2" required style="width : 40px; heigth : 1px " {{$hoy>$match->date?'disabled':''}}>
+                    <input type="number" name="goals2"  min="0" max = "99" wire:model.defer="goals2" required style="width : 40px; heigth : 1px "{{$hoy >=$match->date?$hoy ==$match->date&&$hoyHoras < $match->time?'':'disabled':''}}>
                     <label class="card-text" style="margin-left:5px; margin-right:10px;">
                         <b>{{strtoupper(substr($country2->name,0,3))}}</b>
                     </label>
                 </div>
                 <br>
                 <br>
-                @if ($match->date > $hoy)
-                    <button class="btn btn-outline-dark" wire:click="grabar">Enviar</button>
+                @if ($hoy<=$match->date)
+                    @if ($hoy == $match->date&&$hoyHoras > $match->time)
+
+                    @else
+                        <button class="btn btn-outline-dark" wire:click="grabar">Enviar</button>
+                    @endif
                 @endif
                 <br>
                 <br>
                 <p style = "float: left; margin-right: 20px; "><b> Fecha: {{Carbon\Carbon::parse($match->date)->format('d/m/Y') }}</b></p><p > <b>Horario: {{ $match->time }}hs</b></p>
-                @if ($match->date<$hoy)
+
+               @if ($hoy > $match->date)
                     <p><b>Resultado : {{$match->goals1}} - {{$match->goals2}}</b></p>
                 @endif
+
                 @error("goals1")
                 <br>
                 <br>

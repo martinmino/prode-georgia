@@ -48,13 +48,12 @@ class PronosticoFinal extends Component
     public function mount()
     {
         // $this->fecha_limite = '2022-11-21';
+        $this->hoy = Carbon::today()->format('Y-m-d');
         $this->fecha_limite = Carbon::create(2022, 11, 21)->format('Y-m-d');
         $this->country1_id = $this->user->country1_id;
         $this->country2_id = $this->user->country2_id;
         $this->country3_id = $this->user->country3_id;
         $this->country4_id = $this->user->country4_id;
-
-        $this->hoy = Carbon::today()->format('Y-m-d');
 
         $this->countries = Country::all('id', 'name');
     }
