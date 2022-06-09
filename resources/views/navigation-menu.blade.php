@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
       <a class="navbar-brand" href="{{ route('dashboard')}}">
-      <img  src="{{asset('img/logo/logo.jpg')}}" width="70" height="60" class="d-inline-block align-text-top">
+      <img  src="http://localhost/PRODE-GEORGIA/public/img/logo/logo.png" width="45" height="50" class="d-inline-block align-text-top">
       </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -50,9 +50,9 @@
             <li class="nav-item">
                 <a href="{{ route('register')}}" class="nav-link">Registrarse</a>
             </li>
-
         </ul>
     @endauth
     </div>
   </div>
 </nav>
+
