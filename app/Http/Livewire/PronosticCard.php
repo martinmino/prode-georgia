@@ -63,14 +63,14 @@ class PronosticCard extends Component
         $hoyHoras = Carbon::now('America/Argentina/Buenos_Aires')->format('H:i:s');
         if ($hoy <= $this->match->date) {
             if ($hoy == $this->match->date && $hoyHoras > $this->match->time) {
-                return back()->with('success', 'Ya no puedes modificar el resultado');
+                return back()->with('denied', 'Ya no puedes modificar el resultado');
             } else {
                 $this->pronostic->goals1 = $this->goals1;
                 $this->pronostic->goals2 = $this->goals2;
                 $this->pronostic->save();
                 return back()->with('success', 'Datos cargados correctamente');
             }
-            return back()->with('success', 'Ya no puedes modificar el resultado');
+            return back()->with('denied', 'Ya no puedes modificar el resultado');
         }
     }
 }

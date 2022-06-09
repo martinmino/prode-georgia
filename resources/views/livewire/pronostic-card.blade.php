@@ -50,6 +50,9 @@
                 @if (\Session::has('success'))
                        <label style="color: green;"> {!! \Session::get('success') !!}</label>
                 @endif
+                @if (\Session::has('denied'))
+                       <label style="color: red;"> {!! \Session::get('denied') !!}</label>
+                @endif
             </div>
         </div>
     </div>
