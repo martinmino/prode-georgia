@@ -33,7 +33,7 @@
                 <br>
                 <p style = "float: left; margin-right: 20px; "><b> Fecha: {{Carbon\Carbon::parse($match->date)->format('d/m/Y') }}</b></p><p > <b>Horario: {{ $match->time }}hs</b></p>
 
-               @if ($match->is_over == 1)
+               @if ($match->is_over)
                     <p><b>Resultado : {{$match->goals1}} - {{$match->goals2}}</b></p>
                 @endif
 
