@@ -109,6 +109,8 @@ class MatchesController extends Controller
         $match->goals2 = $request->goals2;
         $match->active_since = $request->active_since;
         $match->is_over = isset($request->is_over) ? 1 : 0;
+        $match->penalties_definition = isset($request->penalties_definition) ? 1 : 0;
+        $match->penalties_winner = $request->penalties_winner;
         $match->save();
 
 
@@ -144,7 +146,6 @@ class MatchesController extends Controller
             //Puntos extras por acertar un marcador
             if ($m->goals1 == $p->goals1 || $m->goals2 == $p->goals2) $p->puntos += 2;
             //Puntos extas por acertar marcador exacto
-            if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2)
             if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2) {
                 $p->puntos += 5;
                 $p->aciertos = true;
