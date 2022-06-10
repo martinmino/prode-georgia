@@ -37,7 +37,7 @@ class PrediccionController extends Controller
             }
         }
 
-        $pronostics = Pronostic::all();
+        $pronostics = Pronostic::all()->where('user_id', auth()->id());
         return view('dashboard', compact('pronostics'));
     }
 }
