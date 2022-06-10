@@ -113,10 +113,27 @@
                 Partido finalizado
               </label>
             </div>
+
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="penalties_definition" value="{{$match->penalties_definition}}" id="penalties_definition" {{$match->penalties_definition?'checked':''}} onClick='desplegar()'>
+              <label class="form-check-label" for="penalties_definition">
+                Definicion por penales
+              </label>
+            </div>
           </div>
 
+            <div class="col-md-5" style='visibility:hidden;'id='div1'>
+                <label for="penalties_winner" class="form-label">¿Quien Gano?</label>
+                <select class="form-select from-control" id="penalties_winner" name="penalties_winner" readonly>
+                    <option value="{{$match->country1->id}}" {{$match->country1_id==$match->id?'selected':''}}>{{$match->country1->name}}</option>
+                    <option value="{{$match->country2->id}}" {{$match->country2_id==$match->id?'selected':''}}>{{$match->country2->name}}</option>
+                </select>
+            </div>
+
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Grabar</button>
+          <button type="submit" class="btn btn-primary" >Grabar</button>
           <a href="{{ route('matches.index')}}" class="btn btn-primary">Volver</a>
         </div>
       </form>
@@ -125,5 +142,17 @@
     @if (\Session::has('success'))
     <label style="color: green;"> {!! \Session::get('success') !!}</label>
     @endif
+<script type="text/javascript">
+   function desplegar(){
+    var penalties_definition = document.getElementById('penalties_definition');
 
+    if(penalties_definition.checked==true){
+     div1.style.visibility = 'visible';
+    }
+    else{
+     div1.style.visibility = 'hidden';
+    }
+   }
+
+</script>
 </x-app-layout>

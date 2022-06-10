@@ -9,7 +9,10 @@ use App\Models\Employee;
 use App\Models\Pronostic;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Requests\UpdateMatchRequest;
+use App\Models\Partido;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\PseudoTypes\False_;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class MatchesController extends Controller
 {
@@ -45,7 +48,7 @@ class MatchesController extends Controller
      */
     public function store(StoreMatchRequest $request)
     {
-        $match = new Matches();
+        $match = new Partido();
         $match->date = $request->date;
         $match->time = $request->time;
         $match->group = $request->group;
@@ -142,19 +145,17 @@ class MatchesController extends Controller
             if ($m->goals1 == $p->goals1 || $m->goals2 == $p->goals2) $p->puntos += 2;
             //Puntos extas por acertar marcador exacto
             if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2)
-            {
+            if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2) {
                 $p->puntos += 5;
                 $p->aciertos = true;
             }
             //Puntos por definicion por penales
-            if ($m->penalties_definition && $m->goals1 == $m->goals2)
-            {
+            if ($m->penalties_definition && $m->goals1 == $m->goals2) {
                 if ($m->penalties_winner == $p->penalties_winner) $p->puntos += 5;
             }
 
             $p->save();
         }
-
     }
 
     /**
