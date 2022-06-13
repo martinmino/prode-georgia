@@ -30,7 +30,7 @@
                     </label>
                 </div>
                 <br>
-                @if ($goals2 != null && $goals1 != null && $pronostic->penalties_definition)
+                @if ($goals2 != null && $goals1 != null && $match->penalties_definition)
                     @if ($Penalties1 == $Penalties2)
                         <label for="penalties_winner" class="form-label">¿Quien Gano en los Penales?</label>
                         <div class="col-md-5" id='div1'>
