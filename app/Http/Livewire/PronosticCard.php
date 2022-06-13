@@ -19,10 +19,13 @@ class PronosticCard extends Component
     public Country $country1;
     public Country $country2;
     public $hoy;
-
+    public $Penalties1;
+    public $Penalties2;
+    public $penalties_winner;
     protected $rules = [
         'goals1' => ['required', 'numeric', 'min:0', 'max:99'],
         'goals2' => ['required', 'numeric', 'min:0', 'max:99'],
+        'penalties_winner' => ['required']
     ];
 
 
@@ -44,6 +47,8 @@ class PronosticCard extends Component
     {
         return view('livewire.pronostic-card');
     }
+
+
     public function mount()
     {
         $this->hoy = Carbon::now('America/Argentina/Buenos_Aires')->format('Y-m-d');
@@ -55,6 +60,7 @@ class PronosticCard extends Component
 
         $this->goals1 = $this->pronostic->goals1;
         $this->goals2 = $this->pronostic->goals2;
+        $this->penalties_winner = $this->pronostic->penalties_winner;
     }
     public function grabar()
     {
@@ -67,6 +73,7 @@ class PronosticCard extends Component
             } else {
                 $this->pronostic->goals1 = $this->goals1;
                 $this->pronostic->goals2 = $this->goals2;
+                $this->pronostic->penalties_winner = $this->penalties_winner;
                 $this->pronostic->save();
                 return back()->with('success', 'Datos cargados correctamente');
             }

@@ -23,7 +23,8 @@ class Partido extends Model
         'goals1',
         'goals2',
         'active_since',
-        'is_over'
+        'is_over',
+        'penalties_definition'
     ];
 
     /**

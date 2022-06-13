@@ -56,6 +56,7 @@ class MatchesController extends Controller
         $match->country1_id = $request->country1_id;
         $match->country2_id = $request->country2_id;
         $match->active_since = $request->active_since;
+        $match->penalties_definition = isset($request->penalties_definition) ? 1 : 0;
         $match->save();
         return back()->with('success', 'Creado Correctamente');
     }

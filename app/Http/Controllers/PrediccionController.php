@@ -12,11 +12,12 @@ use Carbon\Carbon;
 
 class PrediccionController extends Controller
 {
+
+
     public function index()
     {
-        $partidos    = Partido::all('id');
+        $partidos    = Partido::all('id', 'penalties_definition');
         $pronostics = Pronostic::all()->where('user_id', auth()->id());
-
 
         foreach ($partidos as $partido) {
 
@@ -33,6 +34,7 @@ class PrediccionController extends Controller
                 Pronostic::create([
                     'user_id' => auth()->id(),
                     'match_id' => $partido->id,
+                    'penalties_definition' => $partido->penalties_definition,
                 ]);
             }
         }
