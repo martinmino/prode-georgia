@@ -156,6 +156,11 @@ class MatchesController extends Controller
                 if ($m->penalties_winner == $p->penalties_winner) $p->puntos += 5;
             }
 
+            //Si no cargo ningun resultado
+            if ($p->goals1 == null || $p->goals2 == null) {
+                $p->puntos = 0;
+            }
+
             $p->save();
         }
     }
