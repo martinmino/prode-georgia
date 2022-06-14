@@ -25,9 +25,6 @@ class PronosticCard extends Component
     protected $rules = [
         'goals1' => ['required', 'numeric', 'min:0', 'max:99'],
         'goals2' => ['required', 'numeric', 'min:0', 'max:99'],
-        'penalties_winner' => [
-            'required'
-        ],
     ];
 
 
@@ -37,7 +34,6 @@ class PronosticCard extends Component
         return [
             'goals1.required' => 'El campo de ' . $this->country1->name . ' esta vacio',
             'goals2.required' => 'El campo de ' . $this->country2->name . ' esta vacio',
-            'penalties_winner.required' => 'El campo de ganador de los penales esta vacio',
             'goals1.max' => 'El campo de ' . $this->country1->name . ' debe ser menor a 100',
             'goals2.max' => 'El campo de ' . $this->country2->name . ' debe ser menor a 100',
             'goals1.min' => 'El campo de ' . $this->country1->name . ' debe ser mayor a 0',

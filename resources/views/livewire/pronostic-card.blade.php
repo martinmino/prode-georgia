@@ -34,11 +34,8 @@
                     @if ($Penalties1 == $Penalties2)
                         <label for="penalties_winner" class="form-label">¿Quien Gano en los Penales?</label>
                         <div class="col-md-5" id='div1'>
-                            <select
-                                class="form-select from-control
-                                {{ $errors->has('penalties_winner') ? 'is-invalid' : '' }} "
-                                id="penalties_winner" name="penalties_winner" readonly
-                                wire:model.defer="penalties_winner"
+                            <select class="form-select from-control " id="penalties_winner" name="penalties_winner"
+                                readonly wire:model.defer="penalties_winner"
                                 {{ $hoy >= $match->date ? ($hoy == $match->date && $hoyHoras < $match->time ? '' : 'disabled') : '' }}>
                                 <option value="">---Seleccione un país---</option>
                                 <option value="{{ $match->country1->id }}"
