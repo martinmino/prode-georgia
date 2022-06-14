@@ -16,7 +16,7 @@ class PrediccionController extends Controller
 
     public function index()
     {
-        $partidos    = Partido::all('id', 'penalties_definition');
+        $partidos = Partido::all('id', 'penalties_definition');
         $pronostics = Pronostic::all()->where('user_id', auth()->id());
 
         foreach ($partidos as $partido) {
