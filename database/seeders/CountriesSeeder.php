@@ -29,11 +29,11 @@ class CountriesSeeder extends Seeder
         DB::table('countries')->insert(['id' => 13, 'name' => 'Dinamarca', 'iso' => 'dk']);
         DB::table('countries')->insert(['id' => 14, 'name' => 'Tunez', 'iso' => 'tn']);
         DB::table('countries')->insert(['id' => 15, 'name' => 'Francia', 'iso' => 'fr']);
-        DB::table('countries')->insert(['id' => 16, 'name' => 'Peru/Australia/UAE', 'iso' => 'pe']);
+        DB::table('countries')->insert(['id' => 16, 'name' => 'Australia', 'iso' => 'pe']);
         DB::table('countries')->insert(['id' => 17, 'name' => 'Alemania', 'iso' => 'de']);
         DB::table('countries')->insert(['id' => 18, 'name' => 'Japon', 'iso' => 'jp']);
         DB::table('countries')->insert(['id' => 19, 'name' => 'España', 'iso' => 'es']);
-        DB::table('countries')->insert(['id' => 20, 'name' => 'Nueva Zelanda/Costa Rica', 'iso' => 'nz']);
+        DB::table('countries')->insert(['id' => 20, 'name' => 'Costa Rica', 'iso' => 'nz']);
         DB::table('countries')->insert(['id' => 21, 'name' => 'Marruecos', 'iso' => 'ma']);
         DB::table('countries')->insert(['id' => 22, 'name' => 'Croacia', 'iso' => 'hr']);
         DB::table('countries')->insert(['id' => 23, 'name' => 'Belgica', 'iso' => 'be']);
