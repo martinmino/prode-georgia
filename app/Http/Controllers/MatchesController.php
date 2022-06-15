@@ -13,6 +13,8 @@ use App\Models\Partido;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\PseudoTypes\False_;
 use phpDocumentor\Reflection\PseudoTypes\True_;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\PositionsController;
 
 class MatchesController extends Controller
 {
@@ -121,6 +123,22 @@ class MatchesController extends Controller
          */
         if ($match->is_over) $this->calcularPuntajes($match);
 
+        /* Le pone posicion a los jugadores que realizaron un pronostico*/
+        $contador = 1;
+
+        $posts = User::join('pronostics', 'users.id', '=', 'pronostics.user_id')
+            ->select('users.id', 'users.name', 'users.position', DB::raw('SUM(pronostics.puntos) as puntos'), DB::raw('SUM(pronostics.aciertos) as aciertos'))
+            ->groupBy('users.id', 'users.name', 'users.position')
+            ->orderBy('puntos', 'desc')
+            ->orderBy('aciertos', 'desc')
+            ->get();
+
+        foreach ($posts as $item) {
+            $item->position = $contador;
+            $contador++;
+            $item->save();
+        }
+
         return back()->with('success', 'Actualizado Correctamente');
     }
 
@@ -143,7 +161,7 @@ class MatchesController extends Controller
             //Ganó el equipo B
             if ($m->goals1 < $m->goals2 && $p->goals1 < $p->goals2) $p->puntos += 5;
             //Empate
-            if ($m->goals1 == $m->goals2 && $p->goals1 == $p->goals2) $p->puntos += 5;
+            if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2) $p->puntos += 5;
             //Puntos extras por acertar un marcador
             if ($m->goals1 == $p->goals1 || $m->goals2 == $p->goals2) $p->puntos += 2;
             //Puntos extas por acertar marcador exacto
@@ -156,14 +174,12 @@ class MatchesController extends Controller
                 if ($m->penalties_winner == $p->penalties_winner) $p->puntos += 5;
             }
 
-            //Si no cargo ningun resultado
-            if ($p->goals1 == null || $p->goals2 == null) {
-                $p->puntos = 0;
-            }
 
             $p->save();
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.
