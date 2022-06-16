@@ -16,6 +16,8 @@ use phpDocumentor\Reflection\PseudoTypes\True_;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PositionsController;
 
+use function PHPUnit\Framework\isNull;
+
 class MatchesController extends Controller
 {
     /**
@@ -131,6 +133,7 @@ class MatchesController extends Controller
             ->groupBy('users.id', 'users.name', 'users.position')
             ->orderBy('puntos', 'desc')
             ->orderBy('aciertos', 'desc')
+            ->orderBy('position', 'desc')
             ->get();
 
         foreach ($posts as $item) {
@@ -161,7 +164,7 @@ class MatchesController extends Controller
             //Ganó el equipo B
             if ($m->goals1 < $m->goals2 && $p->goals1 < $p->goals2) $p->puntos += 5;
             //Empate
-            if ($m->goals1 == $p->goals1 && $m->goals2 == $p->goals2) $p->puntos += 5;
+            if ($m->goals1 == $m->goals2 && $p->goals1 == $p->goals2 && !is_null($p->goals1) && !is_null($p->goals2)) $p->puntos += 5;
             //Puntos extras por acertar un marcador
             if ($m->goals1 == $p->goals1 || $m->goals2 == $p->goals2) $p->puntos += 2;
             //Puntos extas por acertar marcador exacto
