@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UsersSeeder extends Seeder
 {
@@ -41,5 +42,8 @@ class UsersSeeder extends Seeder
             $user->admin       = true;
             $user->save();
         }
+
+        //Creo los pronosticos para todos los usuarios
+        DB::insert("insert into pronostics (user_id, match_id) select users.id, matches.id from users, matches");
     }
 }
