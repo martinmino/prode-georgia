@@ -1,11 +1,3 @@
 <x-app-layout>
-    <div class="col-sm-12"  style="max-width: 1280px;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    margin-top: 1cm">
-        <h2>Welcome is works!</h2>
-
-    </div>
+    <img src="{{asset('img/banner-home.png')}}" class="img-fluid">
 </x-app-layout>
