@@ -115,9 +115,22 @@ class MatchesController extends Controller
         $match->active_since = $request->active_since;
         $match->is_over = isset($request->is_over) ? 1 : 0;
         $match->penalties_definition = isset($request->penalties_definition) ? 1 : 0;
-        $match->penalties_winner = $request->penalties_winner;
-        $match->save();
+        $match->penalties1 = $request->penalties1;
+        $match->penalties2 = $request->penalties2;
 
+        /**
+         * Si el partido se define por penales, guardo el pais ganador
+         */
+        if ($match->penalties_definition)
+        {
+            $match->penalties_winner = ($match->penalties1 > $match->penalties2)
+                                     ?
+                                     $match->country1_id
+                                     :
+                                     $match->country2_id;
+        }
+
+        $match->save();
 
         /**
          * Si el partido tiene el tilde de finalizado, llamo a la funcion
@@ -177,12 +190,9 @@ class MatchesController extends Controller
                 if ($m->penalties_winner == $p->penalties_winner) $p->puntos += 5;
             }
 
-
             $p->save();
         }
     }
-
-
 
     /**
      * Remove the specified resource from storage.

@@ -14,8 +14,10 @@ class AddPenaltiesDefinitionToMatchesTable extends Migration
     public function up()
     {
         Schema::table('matches', function (Blueprint $table) {
-            $table->boolean('penalties_definition')->after('is_over')->default(false);
-            $table->unsignedBigInteger('penalties_winner')->nullable()->after('penalties_definition');
+            $table->boolean('penalties_definition')->default(false);
+            $table->integer('penalties1')->nullable();
+            $table->integer('penalties2')->nullable();
+            $table->unsignedBigInteger('penalties_winner')->nullable();
         });
     }
 
@@ -28,6 +30,8 @@ class AddPenaltiesDefinitionToMatchesTable extends Migration
     {
         Schema::table('matches', function (Blueprint $table) {
             $table->dropColumn('penalties_definition');
+            $table->dropColumn('penalties1');
+            $table->dropColumn('penalties2');
             $table->dropColumn('penalties_winner');
         });
     }
