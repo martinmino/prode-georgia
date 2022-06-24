@@ -50,7 +50,7 @@
             @enderror
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
             <label for="country1_id" class="form-label">Pais 1</label>
             <select class="form-select from-control {{ $errors->has('country1_id') ? 'is-invalid' : '' }}" id="country1_id"
                 name="country1_id" readonly>
@@ -78,7 +78,18 @@
             @enderror
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-1">
+            <label for="group" class="form-label">Penales</label>
+            <input type="number" class="form-control {{ $errors->has('penalties1') ? 'is-invalid' : '' }}" id="penalties1"
+                name="penalties1" value="{{ $match->penalties1 }}" min="0" max="99">
+            @error('penalties1')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="col-md-4">
             <label for="country2_id" class="form-label">Pais 2</label>
             <select class="form-select from-control {{ $errors->has('country2_id') ? 'is-invalid' : '' }}" id="country2_id"
                 name="country2_id" readonly>
@@ -106,6 +117,17 @@
             @enderror
         </div>
 
+        <div class="col-md-1">
+            <label for="group" class="form-label">Penales</label>
+            <input type="number" class="form-control {{ $errors->has('penalties2') ? 'is-invalid' : '' }}" id="penalties2"
+                name="penalties2" value="{{ $match->penalties2 }}" min="0" max="99">
+            @error('penalties2')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
         <div class="col-3">
             <label for="active_since" class="form-label">Fecha desde</label>
             <input type="date" class="form-control {{ $errors->has('active_since') ? 'is-invalid' : '' }}"
@@ -119,33 +141,27 @@
 
         <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="is_over" value="{{ $match->is_over }}"
-                    id="is_over" {{ $match->is_over ? 'checked' : '' }}>
-                <label class="form-check-label" for="is_over">
-                    Partido finalizado
-                </label>
+                <input class="form-check-input"
+                       type="checkbox"
+                       name="is_over"
+                       value="{{ $match->is_over }}"
+                       id="is_over" {{ $match->is_over ? 'checked' : '' }}
+                >
+                <label class="form-check-label" for="is_over">Partido finalizado</label>
             </div>
 
         </div>
         <div class="col-12">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="penalties_definition"
-                    value="{{ $match->penalties_definition }}" id="penalties_definition"
-                    {{ $match->penalties_definition ? 'checked' : '' }} onClick='desplegar()'>
-                <label class="form-check-label" for="penalties_definition">
-                    Definicion por penales
-                </label>
+                <input class="form-check-input"
+                       type="checkbox"
+                       name="penalties_definition"
+                       value="{{ $match->penalties_definition }}"
+                       id="penalties_definition"
+                       {{ $match->penalties_definition ? 'checked' : '' }}
+                >
+                <label class="form-check-label" for="penalties_definition">Definicion por penales</label>
             </div>
-        </div>
-
-        <div class="col-md-5" style='visibility:hidden;' id='div1'>
-            <label for="penalties_winner" class="form-label">¿Quien Gano?</label>
-            <select class="form-select from-control" id="penalties_winner" name="penalties_winner" readonly>
-                <option value="{{ $match->country1->id }}" {{ $match->country1_id == $match->id ? 'selected' : '' }}>
-                    {{ $match->country1->name }}</option>
-                <option value="{{ $match->country2->id }}" {{ $match->country2_id == $match->id ? 'selected' : '' }}>
-                    {{ $match->country2->name }}</option>
-            </select>
         </div>
 
         <div class="col-12">
@@ -158,15 +174,5 @@
     @if (\Session::has('success'))
         <label style="color: green;"> {!! \Session::get('success') !!}</label>
     @endif
-    <script type="text/javascript">
-        function desplegar() {
-            var penalties_definition = document.getElementById('penalties_definition');
 
-            if (penalties_definition.checked == true) {
-                div1.style.visibility = 'visible';
-            } else {
-                div1.style.visibility = 'hidden';
-            }
-        }
-    </script>
 </x-app-layout>
