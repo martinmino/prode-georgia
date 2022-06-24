@@ -77,7 +77,7 @@ class PronosticCard extends Component
         //Fecha del partido
         $fechaPartido = date_create($this->match->date . ' ' . $this->match->time);
 
-        return ($this->match->is_over || $fechaPartido <= getDate());
+        return ($this->match->is_over || $fechaPartido < now());
     }
     /**
      * Devuelve un codigo de color de acuerdo al acierto del pronóstico

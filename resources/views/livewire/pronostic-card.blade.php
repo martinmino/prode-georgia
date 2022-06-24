@@ -73,7 +73,7 @@
 
             </div>
 
-            @if ($match->penalties_definition && $goals1 == $goals2)
+            @if ($match->penalties_definition && $goals1 == $goals2 && !is_null($goals1) && !is_null($goals2))
             <br>
             <div class="card">
                 <div class="card-header">
